@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FM Líder 100.1</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Tipografía -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="diseno.css">
+  <link rel="icon" href="Imagenes/logo.png">
+</head>
+
+ <body>
+    <div id="micontainer" style="background: transparent url(vegas/overlays/02.png) center center repeat; width: 100%; height: 100%; position: absolute;">
+    <div class="wrapper" id="app">
+      <div class="player" style="padding-bottom: 10px !important;">
+        <div class="player__top">
+          <div class="player-cover">
+            <transition-group :name="transitionName">
+                <div class="player-cover__item" v-if="$index === currentTrackIndex" :style="{ backgroundImage: `url(${track.cover})` }"  v-for="(track, $index) in tracks" :key="$index"></div>
+            </transition-group>
+          </div>
+          <div class="player-controls">
+            <div class="social-media__item " style="display: inline-block;" @click="redirectToURL('https://www.facebook.com/fmlider')">
+              <i class="bi bi-facebook" ></i>
+            </div>
+            <a :href="currentTrack.url" target="_blank" class="social-media__item" style="display: none">
+              <i class="bi bi-external-link"></i>
+            </a>
+            <div class="social-media__item" style="display: inline-block;" @click="redirectToURL('https://www.instagram.com/fm_lider100.1')">
+             <i class="bi bi-instagram" ></i>
+            </div>
+            <div class="social-media__item" style="display: none" @click="redirectToURL('#')">
+             <i class="bi bi-tiktok" ></i>
+            </div>
+            <div class="social-media__item" style="display: none" @click="redirectToURL('#')">
+              <i class="bi bi-twitter-x" ></i>
+            </div>
+            <div class="social-media__item-sinefecto"></div><div class="social-media__item-sinefecto"></div>            
+            
+            <div class="social-media__item2 -xl js-play" @click="play" style="margin: 20px 0;">
+              <div class="social-media__item2" >
+                <i class="bi bi-pause-circle" style="font-size: 70px;" v-if="isTimerPlaying"></i>
+                <i class="bi bi-play-circle-fill" style="font-size: 70px;" v-else></i>
+              </div>
+            </div>
+
+<body>
+
+  <header>
+    <div class="header-inner container">
+      <a href="index.html" class="header-brand" aria-label="Inicio">
+        <img src="Imagenes/logo.png" alt="FM Líder 100.1">
+      </a>
+
+      <nav aria-label="Navegación principal">
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="programacion.html">Programación</a></li>
+          <li><a href="noticias.html">Noticias</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section
+  < !-- --------- Reproductor Moderno + Neón Protagonista ---------- -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<section class="radio-player-modern">
+  <div class="neon-wrap big">
+    <div class="neon-sign" aria-hidden="true"><span>ON AIR</span></div>
+  </div>
+
+  <div class="player-glass-modern minimal">
+    <div class="player-text"></div>
+    <audio id="rpAudio" preload="none" crossorigin="anonymous" src="https://streaming1.locucionar.com/proxy/fmliderturadio?mp=/stream"></audio>
+
+    <div class="player-controls-modern">
+      <button id="rpPlay" class="rp-btn" aria-label="Reproducir"><i class="fa-solid fa-play"></i></button>
+      <div class="rp-vol-wrap">
+        <i class="fa-solid fa-volume-high vol-icon"></i>
+        <input id="rpVol" class="rp-vol" type="range" min="0" max="1" step="0.01" value="1" aria-label="Volumen">
+      </div>
+    </div>
+  </div>
+
+  <!-- Canvas para notas musicales -->
+  <canvas class="musical-notes-bg"></canvas>
+</section>
+
+
+<script>
+(function(){
+  const audio = document.getElementById('rpAudio');
+  const play = document.getElementById('rpPlay');
+  const vol = document.getElementById('rpVol');
+
+  audio.crossOrigin = "anonymous";
+  audio.preload = "none";
+
+  play.addEventListener('click', async () => {
+    try {
+      if (audio.paused) {
+        await audio.play();
+        play.innerHTML = '<i class="fa-solid fa-pause"></i>';
+      } else {
+        audio.pause();
+        play.innerHTML = '<i class="fa-solid fa-play"></i>';
+      }
+    } catch(e){
+      console.warn('Playback err', e);
+    }
+  });
+
+  vol.addEventListener('input', (e) => { audio.volume = Number(e.target.value); });
+})();
+</script>
+</section>
+
+    <section id="top5">
+    
+  <h2 class="title-glow">¡CONOCÉ NUESTRO TOP 5 DE LA SEMANA!</h2>
+  <div class="top5-container">
+    <div class="song">
+      <span class="rank">1</span>
+      <img src="IMAGENES/TAYLOR.jpeg.webp" alt="Canción 1">
+      <div class="info">
+        <h3>THE FATE OF OPHELIA</h3>
+        <p>Taylor Swift</p>
+      </div>
+    </div>
+
+    <div class="song">
+      <span class="rank">2</span>
+      <img src="IMAGENES/TINI.jpeg" alt="Canción 2">
+      <div class="info">
+        <h3>HASTA QUE ME ENAMORO</h3>
+        <p>María Becerra & TINI</p>
+      </div>
+    </div>
+
+    <div class="song">
+      <span class="rank">3</span>
+      <img src="IMAGENES/TIAGO.png" alt="Canción 3">
+      <div class="info">
+        <h3>NO MATTER</h3>
+        <p>Tiago PZK</p>
+      </div>
+    </div>
+
+    <div class="song">
+      <span class="rank">4</span>
+      <img src="IMAGENES/SABRINA.png" alt="Canción 4">
+      <div class="info">
+        <h3>HOUSE TOUR</h3>
+        <p>Sabrina Carpenter</p>
+      </div>
+    </div>
+
+    <div class="song">
+      <span class="rank">5</span>
+      <img src="IMAGENES/LOUIS.png" alt="Canción 5">
+      <div class="info">
+        <h3>LEMONADE</h3>
+        <p>Louis Tomlinson</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <!-- NOTICIAS / DESTACADOS -->
+    <section class="section container">
+      <h2 class="center">ÚLTIMAS NOVEDADES</h2>
+      <div class="news-grid" style="margin-top:14px;">
+        <div class="news-item card">
+          <img src="IMAGENES/tini_futttura_vivo_wrd_b36e1e3f.jpeg" alt="">
+          <h4>COMENZÓ FUTTTURA EN BUENOS AIRES Y SE ANUNCIAN FECHAS EN SUDAMÉRICA</h4>
+          <p class="small">Tras agotar entradas en Tecnópolis, TINI anuncia shows en Chile, Uruguay, Paraguay y más ciudades argentinas.</p>
+              <p class="small">Fecha: 27/10/2025</p>
+        </div>
+        <div class="news-item card">
+          <img src="IMAGENES/soda_stereo_ecos_wrd_f71e1a26.jpeg" alt="">
+          <h4>SODA STEREO REGRESA CON TODO Y PREPARA UN SHOW ÚNICO QUE VIAJARÁ POR EL CONTINENTE</h4>
+          <p class="small">La banda que cambió la historia del rock en español agotó en tiempo récord cinco funciones en Argentina y se prepara para conquistar Latinoamérica.</p>
+          <p class="small">Fecha: 01/10/2025</p>
+        </div>
+        <div class="news-item card">
+          <img src="IMAGENES/fito_paez_tiny_wrd_b2d6d42e.jpeg" alt="">
+          <h4>FITO PÁEZ BRILLA EN EL TINY DESK COMO PARTE DEL MES DE LA HERENCIA HISPANA</h4>
+          <p class="small">El músico presentó un set íntimo con éxitos de los 90 y canciones de su más reciente obra, Novela.</p>
+              <p class="small">Fecha:15/09/2025</p>
+        </div>
+      </div>
+    </section>
+
+
+  <div class="container">
+       <div class="contact-socials">
+      <a href="https://www.facebook.com/fmlider" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="https://www.instagram.com/fm_lider100.1" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+    </div>
+    
+      <footer class="site-footer">
+        <p class="small">© 2025 FM Líder 100.1 — Todos los derechos reservados.</p>
+      </footer>
+
+  </div>
+  </main>
+
+<!-- Modal Glass Info Programa -->
+<div id="programa-modal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <img id="modal-foto" src="" alt="Foto del programa">
+    <h3 id="modal-titulo"></h3>
+    <p id="modal-descripcion"></p>
+  </div>
+</div>
+
+<script>
+  const audioVisualizer = document.getElementById('audio');
+  const playPause = document.getElementById('playPause');
+  const status = document.getElementById('status');
+  const canvas = document.getElementById('visualizer');
+  const ctx = canvas.getContext('2d');
+
+  let audioCtx, analyser, source, dataArray;
+
+  playPause.addEventListener('click', () => {
+    if (audioVisualizer.paused) {
+      audioVisualizer.play();
+      status.textContent = 'Reproduciendo...';
+      playPause.innerHTML = '<i class="fas fa-pause"></i>';
+      startVisualizer();
+    } else {
+      audioVisualizer.pause();
+      status.textContent = 'Pausado';
+      playPause.innerHTML = '<i class="fas fa-play"></i>';
+    }
+  });
+
+  function startVisualizer() {
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    analyser = audioCtx.createAnalyser();
+    source = audioCtx.createMediaElementSource(audioVisualizer);
+    source.connect(analyser);
+    analyser.connect(audioCtx.destination);
+    analyser.fftSize = 256;
+    const bufferLength = analyser.frequencyBinCount;
+    dataArray = new Uint8Array(bufferLength);
+
+    function draw() {
+      requestAnimationFrame(draw);
+      analyser.getByteFrequencyData(dataArray);
+      ctx.fillStyle = "#000";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      const barWidth = (canvas.width / bufferLength) * 2.5;
+      let x = 0;
+      for (let i = 0; i < bufferLength; i++) {
+        const barHeight = dataArray[i] / 2;
+        ctx.fillStyle = `rgb(${barHeight + 100}, 50, 0)`;
+        ctx.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
+        x += barWidth + 1;
+      }
+    }
+    draw();
+  }
+</script>
+
+<script>
+  fetch('https://api.rss2json.com/v1/api.json?rss_url=https://www.infobae.com/america/rss/')
+    .then(response => response.json())
+    .then(data => {
+      const noticias = data.items.slice(0, 5);
+      const feed = document.getElementById('feed');
+      noticias.forEach(noticia => {
+        const item = document.createElement('div');
+        item.classList.add('noticia');
+        item.innerHTML = `<a href="${noticia.link}" target="_blank">${noticia.title}</a>`;
+        feed.appendChild(item);
+      });
+    });
+</script>
+
+<script>
+  const songs = document.querySelectorAll('.song');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  songs.forEach((song, i) => {
+    song.style.setProperty('--i', i);
+    observer.observe(song);
+  });
+</script>
+
+<script>
+const notesCanvas = document.querySelector('.musical-notes-bg');
+const notesCtx = notesCanvas.getContext('2d');
+
+function resizeNotesCanvas() {
+  notesCanvas.width = notesCanvas.offsetWidth;
+  notesCanvas.height = notesCanvas.offsetHeight;
+}
+window.addEventListener('resize', resizeNotesCanvas);
+resizeNotesCanvas();
+
+// Crear notas musicales
+const notes = [];
+const numNotes = 30;
+const symbols = ["♪", "♫", "♬"];
+
+for (let i = 0; i < numNotes; i++) {
+  notes.push({
+    x: Math.random() * notesCanvas.width,
+    y: notesCanvas.height + Math.random() * 200,
+    speedY: Math.random() * 0.5 + 0.3,
+    symbol: symbols[Math.floor(Math.random() * symbols.length)],
+    fontSize: Math.random() * 20 + 15
+  });
+}
+
+function animateNotes() {
+  notesCtx.clearRect(0, 0, notesCanvas.width, notesCanvas.height);
+
+  notes.forEach(note => {
+    note.y -= note.speedY;
+    if (note.y < -30) note.y = notesCanvas.height + Math.random() * 100;
+    
+    notesCtx.font = `${note.fontSize}px Arial`;
+    notesCtx.fillStyle = "rgba(255,0,0,0.7)";
+    notesCtx.fillText(note.symbol, note.x, note.y);
+  });
+
+  requestAnimationFrame(animateNotes);
+}
+
+animateNotes();
+</script>
+</body>
+</html>

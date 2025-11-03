@@ -1,0 +1,1933 @@
+/* diseño.css
+   Estilo base para FM Líder 100.1 - paleta: azul/blanco/rojo/negro
+   Tipografía: Montserrat (cargada en HTML)
+*/
+
+:root{
+  --bg-1: #001226;      /* azul oscuro */
+  --bg-2: #000000;      /* negro */
+  --primary: #0f344d;   /* tu azul */
+  --accent: #e50914;    /* rojo acento */
+  --muted: #9fb3c6;
+  --card-bg: rgba(255,255,255,0.03);
+  --glass: rgba(255,255,255,0.04);
+  --radius: 12px;
+  --shadow: 0 10px 30px rgba(2,12,23,0.6);
+}
+
+/* Reset / base */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color:#f3f6f9;
+  background: linear-gradient(180deg,var(--bg-1), var(--bg-2));
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.45;
+   padding-top: 250px;
+}
+
+/* Container */
+.container{
+  max-width:1100px;
+  margin:0 auto;
+  padding:18px;
+}
+
+/* ==== HEADER REESTRUCTURADO ==== */
+header {
+  background: linear-gradient(180deg, #0f344d 0%, #081c29 100%);
+  padding: 20px 0 10px;
+  color: #fff;
+  text-align: center;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* Contenedor */
+.header-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+/* LOGO */
+.header-brand img {
+  height: clamp(120px, 14vw, 180px);
+  width: auto;
+  display: block;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.header-brand img:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.2));
+}
+
+/* NAV debajo del logo */
+nav {
+  margin-top: 8px;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 36px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav a {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 6px 0;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+/* Subrayado animado rojo */
+nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0%;
+  height: 2px;
+  background-color: #ff2c2c;
+  transition: width 0.3s ease;
+}
+
+nav a:hover::after,
+nav a.active::after {
+  width: 100%;
+}
+
+nav a:hover {
+  color: #ff2c2c;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .header-brand img {
+    height: 90px;
+  }
+  nav ul {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  nav a {
+    font-size: 14px;
+  }
+}
+
+
+/* Responsivo */
+@media (max-width: 900px) {
+  .header-inner {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .header-brand {
+    position: static;
+    transform: none;
+    margin-bottom: 8px;
+  }
+  nav ul {
+    gap: 18px;
+  }
+}
+
+nav a:hover{ background: rgba(255,255,255,0.04); transform: translateY(-3px); }
+nav a.active{ background: linear-gradient(90deg, rgba(229,9,20,0.14), rgba(255,255,255,0.02)); box-shadow: 0 6px 20px rgba(229,9,20,0.08); color: var(--accent); }
+
+/* HERO */
+.hero{
+  padding:92px 18px 34px;
+  background: linear-gradient(180deg, rgba(15,52,77,0.18), rgba(0,0,0,0.0));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+.hero .container{ padding-top:12px; }
+.hero h1{
+  margin:0;
+  font-size: clamp(28px, 4.8vw, 48px);
+  color:#fff;
+  letter-spacing:1px;
+}
+.hero p{
+  color:var(--muted);
+  margin-top:8px;
+  font-size:16px;
+}
+
+/* LAYOUT SECCIONES */
+.section{
+  padding:28px 18px;
+}
+.grid{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:18px;
+}
+.card{
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  padding:14px;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(255,255,255,0.02);
+}
+
+/* EN VIVO (player) */
+.live {
+  display:flex;
+  gap:18px;
+  align-items:center;
+  padding:18px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-radius:12px;
+}
+.live .cover{
+  width:120px;
+  height:120px;
+  border-radius:8px;
+  background-image: url('Imagenes/logo.png');
+  background-size: cover;
+  background-position:center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+  flex-shrink:0;
+}
+.live .meta{ flex:1; }
+.live h3{
+  margin:0 0 6px 0;
+  color:#fff;
+  font-size:18px;
+}
+.live p{ margin:0 0 10px 0; color:var(--muted); }
+
+/* audio native */
+.live audio{
+  width:100%;
+  outline:none;
+  filter: drop-shadow(0 6px 20px rgba(0,0,0,0.45));
+  background: transparent;
+  border-radius:8px;
+}
+
+/* DESTACADOS / NEWS */
+.news-grid{ display:grid; grid-template-columns: repeat(3,1fr); gap:18px; }
+.news-item img{ width:100%; height:160px; object-fit:cover; border-radius:8px; display:block; }
+.news-item h4{ margin:10px 0 6px 0; color:#fff; font-size:16px; }
+.news-item p{ margin:0;color:var(--muted); font-size:14px; }
+
+/* PROGRAMACIÓN: básica */
+.schedule{
+  display:grid;
+  grid-template-columns: repeat(2,1fr);
+  gap:12px;
+}
+.show{
+  padding:12px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,0.02);
+}
+.show h5{ margin:0 0 6px 0; color:#fff; }
+.show small{ color:var(--muted); }
+
+/* CONTACT */
+.contact-grid{ display:grid; grid-template-columns: 1fr 360px; gap:18px; }
+.contact-form input, .contact-form textarea{
+  width:100%; padding:10px; border-radius:8px; border:1px solid rgba(255,255,255,0.06); background: transparent; color:#fff;
+}
+.contact-form button{ margin-top:8px; background:var(--accent); color:#fff; border:none; padding:10px 14px; border-radius:8px; cursor:pointer; font-weight:700; }
+
+/* FOOTER */
+.site-footer{
+  margin-top:30px;
+  padding:20px 0;
+  text-align:center;
+  color:var(--muted);
+  border-top:1px solid rgba(255,255,255,0.02);
+}
+
+/* RESPONSIVE */
+@media (max-width: 980px){
+  .grid, .news-grid{ grid-template-columns: repeat(2,1fr); }
+  .contact-grid{ grid-template-columns: 1fr; }
+  .schedule{ grid-template-columns: 1fr; }
+  .header-brand img{ height:90px; }
+  .hero{ padding:72px 12px 18px; }
+}
+@media (max-width: 600px){
+  .grid, .news-grid{ grid-template-columns: 1fr; }
+  nav{ left:12px; transform:none; position:relative; bottom:auto; }
+  nav ul{ flex-wrap:wrap; justify-content:center; gap:8px; }
+  .header-brand img{ height:72px; }
+  .hero h1{ font-size:26px; }
+  .live{ flex-direction:column; align-items:center; text-align:center; }
+  .live .cover{ width:140px; height:140px; }
+  .container{ padding:12px; }
+}
+
+/* utility */
+.text-muted{ color:var(--muted); font-size:14px; }
+.small{ font-size:13px; color:var(--muted); }
+.center{ text-align:center; }
+
+/* ====== UPGRADE VISUAL FM LÍDER ====== */
+
+/* Fondo principal más profundo */
+body {
+  background: radial-gradient(circle at center, #0b1e2b 0%, #08141d 100%);
+  color: #f0f4f8;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Header con efecto glass */
+header {
+  background: rgba(10, 30, 50, 0.85);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  border-bottom: 2px solid rgba(255,255,255,0.05);
+}
+
+/* Logo centrado y elegante */
+.header-brand img {
+  height: clamp(90px, 10vw, 150px);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.header-brand img:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.15));
+}
+
+/* === Navegación mejorada === */
+nav a {
+  font-weight: 600;
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: #ff2b2b;
+  transition: width 0.3s ease;
+}
+
+nav a:hover {
+  color: #ff2b2b;
+}
+nav a:hover::after {
+  width: 100%;
+}
+
+/* === Botón de Reproductor en Vivo === */
+#audio-player {
+  background: linear-gradient(90deg, #0f344d, #1b4e72);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease;
+}
+#audio-player:hover {
+  transform: scale(1.03);
+}
+
+/* === Secciones principales === */
+main {
+  animation: fadeIn 1.2s ease both;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Tarjetas con efecto flotante */
+.card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  backdrop-filter: blur(6px);
+  color: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+}
+
+/* === Footer Pro === */
+footer {
+  text-align: center;
+  padding: 24px 12px;
+  color: #aaa;
+  font-size: 14px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+footer a {
+  color: #ff2b2b;
+  text-decoration: none;
+  font-weight: 600;
+}
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* ==== Header estilo vidrio con blur y fade ==== */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  background: rgba(0, 0, 0, 0.35); /* tono oscuro translúcido */
+  backdrop-filter: blur(12px); /* efecto vidrio */
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.7s ease, opacity 0.7s ease;
+}
+
+/* Al ocultarse */
+header.hide {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+header {
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  
+  /* Eliminar esta línea ↓ */
+  box-shadow: none;
+}
+
+header img {
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.6));
+}
+
+
+
+/* === Reproductor moderno: mejoras visuales y visualizador === */
+.player-modern {
+  display:flex;
+  gap:18px;
+  align-items:center;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));
+  padding:14px;
+  border-radius:14px;
+  box-shadow: 0 12px 30px rgba(2,12,23,0.45);
+  border: 1px solid rgba(255,255,255,0.03);
+}
+.player-modern .pm-left { flex:0 0 100px; display:flex; align-items:center; justify-content:center; }
+.player-modern .pm-cover { width:88px; height:88px; object-fit:contain; border-radius:12px; background:linear-gradient(180deg,#fff, #f3f6f9); padding:8px; box-shadow: 0 8px 20px rgba(15,52,77,0.12); }
+.player-modern .pm-right { flex:1; min-width:0; }
+.player-modern .pm-meta { margin-bottom:10px; }
+.pm-title { font-weight:700; font-size:18px; color:var(--accent); letter-spacing:0.2px; }
+.pm-sub { font-size:13px; color:var(--muted); margin-top:2px; }
+
+/* Botón principal: más grande y con efecto glow */
+.pm-controls { display:flex; align-items:center; gap:14px; }
+.pm-btn {
+  background: linear-gradient(180deg,var(--primary), #1a6ea8);
+  color:#fff;
+  border:0;
+  width:64px;
+  height:64px;
+  border-radius:12px;
+  font-size:22px;
+  cursor:pointer;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow: 0 12px 30px rgba(15,52,77,0.28), 0 0 30px rgba(31,139,255,0.08);
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+.pm-btn:hover{ transform: translateY(-3px); box-shadow: 0 18px 40px rgba(15,52,77,0.32), 0 0 40px rgba(31,139,255,0.12); }
+.pm-btn:active{ transform: translateY(-1px); }
+
+/* Progress y tiempo */
+.pm-progress { flex:1; height:10px; background: rgba(255,255,255,0.04); border-radius:999px; overflow:hidden; cursor:pointer; position:relative; }
+.pm-progress__bar { width:0%; height:100%; background: linear-gradient(90deg,#1fa3ff, var(--primary)); transition: width 0.12s linear; }
+.pm-time { min-width:110px; font-size:13px; color:var(--muted); text-align:right; }
+
+/* Volume */
+.pm-volume { width:120px; appearance:none; height:6px; background:rgba(255,255,255,0.04); border-radius:6px; }
+.pm-volume::-webkit-slider-thumb{ appearance:none; width:14px;height:14px;border-radius:50%;background:var(--primary); box-shadow:0 1px 6px rgba(0,0,0,0.3); cursor:pointer; }
+
+/* Visualizador */
+.pm-visualizer { width:100%; height:64px; display:block; border-radius:8px; background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.02)); margin-bottom:10px; }
+
+/* Responsive */
+@media (max-width:700px){
+  .player-modern { flex-direction:column; align-items:stretch; gap:12px; padding:12px; }
+  .player-modern .pm-left { flex: none; align-self:center; }
+  .player-modern .pm-cover { width:68px; height:68px; padding:6px; }
+  .pm-btn { width:56px; height:56px; font-size:18px; }
+  .pm-time { text-align:left; min-width:unset; }
+  .pm-volume { width:100%; }
+}
+/* === fin reproductor moderno === */
+
+
+.programa-lista {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 40px;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+.programa {
+  flex: 1 1 250px;
+  max-width: 250px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  backdrop-filter: blur(10px) saturate(160%);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Imagen y texto */
+.programa:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.45);
+}
+
+.programa img {
+  width: 100%;
+  height: 70%;
+  object-fit: cover;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.programa h3 {
+  margin: 10px 0;
+  color: white;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* Efecto sincronizado: las demás se atenúan */
+.programa-lista:hover .programa:not(:hover) {
+  opacity: 0.5;
+  transform: scale(0.95);
+}
+
+/* Suaviza el efecto */
+.programa,
+.programa-lista:hover .programa {
+  transition: all 0.4s ease;
+}
+
+
+/* === MODAL GLASS INFO PROGRAMA === */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.modal-content {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
+  max-width: 480px;
+  padding: 30px;
+  text-align: center;
+  color: #fff;
+  animation: glassPop 0.4s ease forwards;
+}
+
+.modal-content img {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 100%;
+  margin-bottom: 20px;
+  box-shadow: 0 0 20px rgba(255,255,255,0.2);
+}
+
+.modal-content h3 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.modal-content p {
+  margin-top: 10px;
+  color: #d0d6dc;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.close {
+  position: absolute;
+  top: 12px;
+  right: 20px;
+  color: #fff;
+  font-size: 26px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+.close:hover {
+  color: #ff2b2b;
+}
+
+@keyframes glassPop {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* === MODAL GLASS EFECTO LÍQUIDO === */
+.modal-glass {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modal-inner {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 24px;
+  padding: 32px;
+  max-width: 460px;
+  text-align: center;
+  color: #fff;
+  box-shadow: 0 0 40px rgba(0,0,0,0.6);
+  animation: modalPop 0.4s ease forwards;
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+}
+
+.modal-inner img {
+  width: 130px;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 16px;
+  box-shadow: 0 0 20px rgba(255,255,255,0.25);
+}
+
+.modal-inner h2 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.modal-inner p {
+  color: #dce0e6;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.close-modal {
+  position: absolute;
+  top: 12px;
+  right: 24px;
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+.close-modal:hover {
+  color: #ff4c4c;
+}
+
+@keyframes modalPop {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* --- Ajuste de cuadrícula de Programación --- */
+.programacion {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  align-items: flex-start;
+  gap: 2rem;
+  padding: 80px 0;
+}
+
+.programa {
+  flex: 1 1 220px;
+  max-width: 240px;
+  min-width: 200px;
+}
+
+.player-modern {
+  text-align: center;
+  padding: 2rem;
+  background: #111;
+  color: #fff;
+}
+
+.player-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+canvas#visualizer {
+  width: 100%;
+  max-width: 600px;
+  height: 150px;
+  background: #000;
+  border-radius: 10px;
+}
+
+.controls button {
+  background: #ff4e00;
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.controls button:hover {
+  background: #ff7a33;
+}
+#programacion h2 {
+  text-align: center;
+}
+#noticias {
+  background: #f5f5f5;
+  padding: 2rem;
+}
+
+#noticias h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+#feed .noticia {
+  margin: 0.5rem 0;
+  text-align: center;
+}
+
+#feed a {
+  color: #333;
+  text-decoration: none;
+}
+
+#feed a:hover {
+  text-decoration: underline;
+}
+
+#top5 {
+  background: #0e0e0e;
+  color: #fff;
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+#top5 h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.top5-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+}
+
+.song {
+  background: #1c1c1c;
+  border-radius: 16px;
+  overflow: hidden;
+  width: 220px;
+  position: relative;
+  cursor: pointer;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
+}
+
+.song:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 12px 20px rgba(255, 78, 0, 0.4);
+}
+
+.song img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
+.song .rank {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: linear-gradient(135deg, #ff4e00, #ff9a00);
+  color: white;
+  font-weight: bold;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  line-height: 36px;
+  font-size: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.song .info {
+  padding: 1rem;
+}
+
+.song h3 {
+  font-size: 1.1rem;
+  margin: 0.2rem 0;
+  color: #fff;
+}
+
+.song p {
+  font-size: 0.9rem;
+  color: #bbb;
+}
+
+
+/* Estado inicial: oculto y desplazado hacia abajo */
+.song {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.5s ease-out;
+  transition-delay: calc(var(--i, 0) * 0.1s);
+}
+
+/* Cuando aparece */
+.song.visible {
+  opacity: 1;
+  transform: translateY(0);
+  box-shadow: 0 8px 20px rgba(255, 0, 0, 0.35);
+}
+
+/* Hover con resplandor más intenso (sin delay) */
+.song.visible:hover {
+  transition-delay: 0s !important;
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 15px 30px rgba(255, 0, 0, 0.6),
+              0 0 15px rgba(255, 0, 0, 0.8);
+}
+
+.on-air-sign {
+  display: inline-block;
+  background: linear-gradient(90deg, #ff0000, #b30000);
+  color: white;
+  font-weight: 700;
+  letter-spacing: 3px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.7), inset 0 0 10px rgba(255, 255, 255, 0.2);
+  animation: pulseLight 1.5s infinite alternate;
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+}
+
+/* Animación de pulso */
+@keyframes pulseLight {
+  0% {
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.5), inset 0 0 10px rgba(255, 255, 255, 0.1);
+  }
+  100% {
+    box-shadow: 0 0 35px rgba(255, 0, 0, 0.9), inset 0 0 20px rgba(255, 255, 255, 0.3);
+  }
+}
+
+/* Fondo general de la sección del reproductor */
+.radio-section {
+  position: relative;
+  background: linear-gradient(to bottom, #05192b 0%, #020b13 70%, #000000 100%);
+  padding-top: 100px;
+  padding-bottom: 80px;
+  margin-top: -60px; /* lo sube visualmente hacia el header */
+  z-index: 3;
+  border: none;
+}
+
+/* El cartel ON AIR */
+.on-air-sign {
+  font-size: 2.8rem;
+  color: #ff2a2a;
+  text-shadow: 0 0 15px #ff2a2a, 0 0 35px #ff0000;
+  font-weight: 700;
+  letter-spacing: 4px;
+  background: rgba(255, 0, 0, 0.05);
+  padding: 20px 60px;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 0, 0, 0.3);
+  margin-bottom: 30px;
+}
+
+/* Reproductor */
+.radio-player {
+  background: rgba(15, 20, 25, 0.4);
+  backdrop-filter: blur(14px);
+  border-radius: 24px;
+  padding: 25px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  width: 380px;
+  box-shadow: 0 0 25px rgba(255, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Botón play */
+.play-btn {
+  background: linear-gradient(135deg, #ff1e1e, #ff4747);
+  border: none;
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.4);
+  transition: transform 0.2s ease;
+}
+.play-btn:hover {
+  transform: scale(1.1);
+}
+
+/* Volumen visible y destacado */
+.volume-slider {
+  accent-color: #ff1e1e;
+  width: 130px;
+  height: 5px;
+  cursor: pointer;
+  opacity: 0.9;
+}
+.volume-slider:hover {
+  opacity: 1;
+}
+
+/* Unión perfecta con Top 5 */
+.top5-section {
+  background: linear-gradient(to bottom, #000000 0%, #000000 100%);
+  margin-top: -5px;
+  position: relative;
+  z-index: 2;
+}
+
+<style>
+/* ---- General ---- */
+.radio-player-modern {
+  width: 100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap: 28px;
+  margin: 60px 0;
+}
+
+/* ---- NEON GRANDE ---- */
+.neon-wrap.big { pointer-events:none; display:flex; justify-content:center; }
+.neon-sign {
+  position: relative;
+  padding: 16px 64px;
+  border-radius: 999px;
+  background: transparent;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  filter: drop-shadow(0 12px 35px rgba(255,0,0,0.35));
+  animation: neonPulseTube 1.5s infinite alternate ease-in-out;
+}
+
+.neon-sign::before {
+  content: "";
+  position:absolute;
+  inset:0;
+  border-radius: 999px;
+  padding: 2px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+  -webkit-mask: linear-gradient(#000,#000) content-box, linear-gradient(#fff,#fff);
+  mask: linear-gradient(#000,#000) content-box, linear-gradient(#fff,#fff);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.05);
+  z-index:1;
+}
+
+.neon-sign span {
+  position:relative;
+  z-index:2;
+  color: #fff;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 800;
+  letter-spacing: 6px;
+  font-size: 2.6rem;
+  text-transform: uppercase;
+  text-shadow:
+    0 0 8px rgba(255, 80, 80, 0.95),
+    0 0 22px rgba(255, 40, 40, 0.9),
+    0 0 42px rgba(255, 10, 10, 0.7),
+    0 0 64px rgba(255, 0, 0, 0.5);
+}
+
+@keyframes neonPulseTube {
+  0% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 18px rgba(255,0,0,0.4));
+  }
+  100% {
+    transform: scale(1.02);
+    filter: drop-shadow(0 0 45px rgba(255,0,0,0.75));
+  }
+}
+.radio-player-modern {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  padding: 80px 0 60px;
+  margin-top: -80px; /* lo sube hacia el header */
+  background: linear-gradient(
+    to bottom,
+    #021a2e 0%,
+    #03101e 40%,
+    #040a0f 70%,
+    #000000 100%
+  );
+  z-index: 2;
+}
+
+/* Aseguramos que el top 5 se “enganche” visualmente sin corte */
+.top5-section {
+  background: linear-gradient(
+    to bottom,
+    #000000 0%,
+    #000000 100%
+  );
+  margin-top: -1px; /* elimina línea de corte entre secciones */
+  position: relative;
+  z-index: 1;
+}
+
+/* ---- Botón ---- */
+.rp-btn {
+  width:64px; height:64px;
+  border-radius:50%;
+  border:none;
+  background: rgba(255,255,255,0.06);
+  color: #f4f4f4;
+  font-size: 20px;
+  display:flex; align-items:center; justify-content:center;
+  cursor:pointer;
+  box-shadow: inset 0 -4px 14px rgba(0,0,0,0.4), 0 8px 20px rgba(0,0,0,0.4);
+  transition: all 0.15s ease;
+}
+.rp-btn:hover {
+  transform: scale(1.05);
+  background: rgba(255, 0, 0, 0.12);
+  box-shadow: 0 0 20px rgba(255,0,0,0.2);
+}
+
+/* ---- Volumen visible ---- */
+.rp-vol-wrap {
+  display:flex;
+  align-items:center;
+  gap: 10px;
+  min-width:160px;
+}
+
+.vol-icon {
+  color: rgba(255,255,255,0.8);
+  font-size: 1.1rem;
+}
+
+.rp-vol {
+  width: 120px;
+  height: 6px;
+  appearance: none;
+  background: rgba(255,255,255,0.12);
+  border-radius: 6px;
+  outline:none;
+  cursor:pointer;
+  transition: all 0.2s ease;
+}
+.rp-vol:hover {
+  background: rgba(255,0,0,0.25);
+}
+.rp-vol::-webkit-slider-thumb {
+  appearance:none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #ff1c1c;
+  box-shadow: 0 0 12px rgba(255,0,0,0.5);
+  cursor:pointer;
+  transition: transform 0.15s ease;
+}
+.rp-vol::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+
+/* ---- Responsive ---- */
+@media (max-width:600px){
+  .neon-sign span { font-size: 2rem; letter-spacing: 4px; }
+  .rp-vol-wrap { min-width: 120px; }
+  .player-glass-modern.minimal { padding: 22px; }
+}
+</style>
+
+/* ==== REPRODUCTOR MODERNO FM LÍDER ==== */
+.radio-player-modern {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 90px 0 120px;
+  background: linear-gradient(180deg, #0b1e2b 0%, #050b11 100%);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Cartel ON AIR */
+.radio-player-modern .on-air-sign {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 46px;
+  color: #ff1e1e;
+  text-shadow: 0 0 15px rgba(255, 0, 0, 0.9), 0 0 35px rgba(255, 0, 0, 0.6);
+  background: rgba(255, 0, 0, 0.08);
+  padding: 12px 48px;
+  border-radius: 18px;
+  border: 2px solid rgba(255, 0, 0, 0.4);
+  letter-spacing: 4px;
+  text-align: center;
+  margin-bottom: 50px;
+  animation: glowPulse 1.8s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+  0%, 100% { text-shadow: 0 0 25px rgba(255, 0, 0, 0.8); }
+  50% { text-shadow: 0 0 45px rgba(255, 0, 0, 1); }
+}
+
+/* Contenedor principal */
+.radio-player {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  border-radius: 22px;
+  padding: 45px 55px;
+  box-shadow: 0 0 40px rgba(255, 0, 0, 0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 340px;
+  text-align: center;
+}
+
+/* Efecto espejo superior */
+.radio-player::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60%;
+  border-radius: 22px 22px 0 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0) 80%);
+  pointer-events: none;
+}
+
+/* Hover */
+.radio-player:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 60px rgba(255, 0, 0, 0.45);
+}
+
+/* Botón Play/Pause */
+.radio-player .play-btn {
+  background: radial-gradient(circle at 30% 30%, #ff4545, #b00000);
+  border: none;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 25px rgba(255, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+}
+
+.radio-player .play-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 40px rgba(255, 0, 0, 0.7);
+}
+
+.play-icon, .pause-icon {
+  width: 28px;
+  height: 28px;
+  fill: #fff;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  position: absolute;
+}
+
+.pause-icon { opacity: 0; transform: scale(0.8); }
+.playing .play-icon { opacity: 0; transform: scale(0.8); }
+.playing .pause-icon { opacity: 1; transform: scale(1); }
+
+/* Volumen */
+.volume-container {
+  margin-top: 28px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.volume-slider {
+  -webkit-appearance: none;
+  width: 180px;
+  height: 6px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.2);
+  outline: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #ff1e1e;
+  box-shadow: 0 0 12px rgba(255, 0, 0, 0.7);
+  transition: transform 0.2s ease;
+}
+
+.volume-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+}
+
+/* Centrado absoluto dentro de su sección */
+.radio-player-modern {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .radio-player-modern { padding: 70px 0 90px; }
+  .on-air-sign { font-size: 34px; }
+  .radio-player { width: 280px; padding: 35px 40px; }
+}
+
+/* === FIX: centrado del botón de Play en el reproductor === */
+.radio-player {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.radio-player .play-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto; /* fuerza centrado horizontal */
+  left: 50%;
+  transform: translateX(-50%); /* centra visualmente incluso si hay padding */
+  position: relative;
+}
+/* ==== FIX FINAL — Centrado del botón de PLAY en el reproductor moderno ==== */
+
+.player-glass-modern {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.player-controls-modern {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px; /* espacio entre botón y volumen */
+}
+
+/* Botón Play perfectamente centrado */
+#rpPlay.rp-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #ff4545, #b00000);
+  border: none;
+  box-shadow: 0 0 25px rgba(255, 0, 0, 0.5);
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+#rpPlay.rp-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 40px rgba(255, 0, 0, 0.7);
+}
+
+/* Control de volumen */
+.rp-vol-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.rp-vol {
+  width: 180px;
+  height: 6px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.2);
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+}
+.rp-vol::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #ff1e1e;
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.6);
+  transition: transform 0.2s ease;
+}
+.rp-vol::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+}
+
+
+
+/* === FORMULARIO DE CONTACTO — Estilo FM Líder === */
+
+.contact-section {
+  padding: 100px 0;
+  text-align: center;
+  background: linear-gradient(180deg, rgba(0,0,0,0.7) 0%, rgba(5,10,15,1) 100%);
+  backdrop-filter: blur(10px);
+}
+
+.contact-section h2 {
+  font-size: 2.4rem;
+  color: #fff;
+  margin-bottom: 40px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-shadow: 0 0 10px rgba(255,0,0,0.3);
+}
+
+/* Caja principal del formulario */
+.contact-form {
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(12px) saturate(160%);
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.1);
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 40px 30px;
+  box-shadow: 0 0 30px rgba(0,0,0,0.4);
+}
+
+/* Inputs y textarea */
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  margin-bottom: 18px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  font-size: 15px;
+  font-family: "Montserrat", sans-serif;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: rgba(255,255,255,0.5);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: #ff1e1e;
+  box-shadow: 0 0 10px rgba(255,0,0,0.3);
+}
+
+/* Botón de envío */
+.contact-form button {
+  width: 100%;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(90deg, #ff1e1e, #b00000);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 20px rgba(255,0,0,0.25);
+}
+
+.contact-form button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(255,0,0,0.45);
+}
+
+/* Estado de éxito o error */
+.contact-form .success-message,
+.contact-form .error-message {
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.contact-form .success-message {
+  color: #53ff78;
+}
+
+.contact-form .error-message {
+  color: #ff4b4b;
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+  .contact-section {
+    padding: 80px 16px;
+  }
+  .contact-form {
+    padding: 30px 20px;
+  }
+  .contact-section h2 {
+    font-size: 2rem;
+  }
+}
+
+.contact-section {
+  background: radial-gradient(circle at top, rgba(10,20,30,0.65) 0%, rgba(0,0,0,0.9) 100%);
+  backdrop-filter: blur(25px) saturate(180%);
+  -webkit-backdrop-filter: blur(25px) saturate(180%);
+  transition: all 0.3s ease;
+}
+
+.success-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-radius: 20px;
+  padding: 30px 40px;
+  color: #fff;
+  text-align: center;
+  box-shadow: 0 0 40px rgba(255,0,0,0.4);
+  z-index: 9999;
+  animation: popupFade 0.5s ease forwards;
+}
+
+/* === CONTACTO ESTILO GLASS NEÓN === */
+
+.contact-section {
+  padding: 100px 0 60px;
+  text-align: center;
+  background: radial-gradient(circle at top, rgba(10,20,30,0.65) 0%, rgba(0,0,0,0.92) 100%);
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+}
+
+.contact-section h2 {
+  font-size: 2.4rem;
+  color: #fff;
+  margin-bottom: 40px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-shadow: 0 0 12px rgba(255,0,0,0.4);
+}
+
+.contact-form {
+  background: rgba(255,255,255,0.07);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border-radius: 24px;
+  border: 1px solid rgba(255,255,255,0.12);
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 40px 30px 50px;
+  box-shadow: 0 0 40px rgba(0,0,0,0.45);
+  transition: box-shadow 0.4s ease;
+}
+.contact-form:hover {
+  box-shadow: 0 0 60px rgba(255,0,0,0.25);
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  margin-bottom: 18px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.06);
+  color: #fff;
+  font-size: 15px;
+  font-family: "Montserrat", sans-serif;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: rgba(255,255,255,0.5);
+}
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: #ff1e1e;
+  box-shadow: 0 0 15px rgba(255,0,0,0.35);
+}
+
+.contact-form button {
+  width: 100%;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(90deg, #ff1e1e, #b00000);
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 25px rgba(255,0,0,0.25);
+}
+.contact-form button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 35px rgba(255,0,0,0.5);
+}
+
+/* POPUP flotante tipo mirror glass */
+.success-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-radius: 20px;
+  padding: 30px 40px;
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+  box-shadow: 0 0 40px rgba(255,0,0,0.4);
+  z-index: 9999;
+  animation: popupFade 0.5s ease forwards;
+}
+@keyframes popupFade {
+  from { opacity: 0; transform: translate(-50%, -60%) scale(0.95); }
+  to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+/* REDES Y DATOS */
+.contact-info {
+  margin-top: 60px;
+  color: #ddd;
+  font-size: 15px;
+}
+.contact-info p {
+  margin: 6px 0;
+}
+.contact-info a {
+  color: #ff1e1e;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+.contact-info a:hover {
+  color: #ff4b4b;
+}
+
+.contact-socials {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 20px;
+}
+.contact-socials a {
+  color: #fff;
+  font-size: 24px;
+  transition: all 0.3s ease;
+}
+.contact-socials a:hover {
+  color: #ff1e1e;
+  transform: scale(1.2);
+}
+
+@media (max-width: 600px) {
+  .contact-section {
+    padding: 80px 16px;
+  }
+  .contact-form {
+    padding: 30px 20px 40px;
+  }
+  .contact-section h2 {
+    font-size: 2rem;
+  }
+}
+/* === EFECTO NEÓN ROJO SUAVE Y ELEGANTE === */
+
+.contact-socials {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  margin-top: 24px;
+}
+
+.contact-socials a {
+  position: relative;
+  color: #fff;
+  font-size: 26px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: 0 0 6px rgba(255, 80, 80, 0.25);
+  transition: all 0.35s ease;
+}
+
+.contact-socials a:hover {
+  color: #ff4040;
+  transform: scale(1.15);
+  background: rgba(255, 60, 60, 0.15);
+  box-shadow: 0 0 15px rgba(255, 60, 60, 0.4), 0 0 25px rgba(255, 40, 40, 0.25);
+}
+
+/* Efecto de halo circular con brillo más contenido */
+.contact-socials a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 60, 60, 0.25) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.contact-socials a:hover::after {
+  opacity: 1;
+  transform: scale(1.25);
+}
+
+/* === EFECTO NEÓN ROJO EN REDES SOCIALES (CORREGIDO + ESPACIADO AJUSTADO) === */
+
+/* Ajustamos posición general de la sección contacto */
+.contact-section {
+  padding: 70px 0 50px; /* antes estaba en 100px */
+  margin-top: -40px; /* la acercamos visualmente al header */
+  background: radial-gradient(circle at top, rgba(10,20,30,0.55) 0%, rgba(0,0,0,0.9) 100%);
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+}
+
+/* Neón en íconos */
+.contact-socials {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  margin-top: 24px;
+}
+
+.contact-socials a {
+  position: relative;
+  color: #fff;
+  font-size: 26px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.25);
+  transition: all 0.35s ease;
+}
+
+.contact-socials a:hover {
+  color: #ff2b2b8d;
+  transform: scale(1.2);
+  background: rgba(255, 0, 0, 0.15);
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.55), 0 0 35px rgba(255, 0, 0, 0.35);
+}
+
+/* Efecto glow circular */
+.contact-socials a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 0, 0, 0.4) 0%, transparent 40%);
+  opacity: 0;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.contact-socials a:hover::after {
+  opacity: 1;
+  transform: scale(1.3);
+}
+.programa.card-glass {
+  opacity: 1 !important; /* fuerza que siempre sea visible */
+  transform: none !important; /* evita que se desplace */
+}
+.programa {
+  opacity: 0.3; /* antes era 0 */
+  transform: translateY(20px);
+  transition: all 0.5s ease;
+}
+
+.programa.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Cards de programas */
+.programa.card-glass {
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 15px;
+  padding: 15px;
+  margin: 10px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s, opacity 0.5s ease;
+  color: #fff;
+
+  /* Efecto fade-in inicial */
+  opacity: 0.3;         /* Sutil, no invisible */
+  transform: translateY(20px);
+}
+
+/* Cuando entra en viewport */
+.programa.card-glass.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hover glow */
+.programa.card-glass:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px #ff2b2b8d;
+}
+
+/* Imagen cuadrada y recorte centrado */
+.programa.card-glass img {
+  width: 100%;
+  aspect-ratio: 1/1;    /* fuerza cuadrado */
+  object-fit: cover;    /* recorta centrado */
+  border-radius: 15px;  /* bordes redondeados */
+  margin-bottom: 10px;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+main {
+  margin-top: 20px; /* ajusta según la altura real de tu header */
+}
+.programa.card-glass {
+  opacity: 0.3;        
+  transform: translateY(20px);
+  transition: transform 0.3s, box-shadow 0.3s, opacity 0.5s ease;
+  text-align: center;
+}
+
+.programa.card-glass.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Ajuste de margen para la sección de horarios */
+.schedule-section {
+  margin-top: 30px; /* menos espacio que los 100px */
+}
+
+#feed .card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 20px #ff2b2b8d;
+}
+
+/* Títulos principales con glow rojo */
+.title-glow {
+  font-size: 2.2rem;       /* tamaño grande */
+  font-weight: 700;         /* negrita */
+  text-align: center;       /* centrado */
+  margin-bottom: 25px;      /* espacio inferior */
+  color: #fff;              /* blanco */
+  text-shadow:
+    0 0 2px #ff2b2b59,
+    0 0 4px #ff2b2b59,
+    0 0 6px #ff2b2b59;
+}
+
+/* Botones sociales */
+.contact-socials {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 20px 0;
+}
+
+/* Botones sociales unificados */
+.contact-socials a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.05); /* fondo inicial transparente/vidrio */
+  color: #fff; /* icono inicial blanco */
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255,255,255,0.2);
+  text-decoration: none;
+}
+
+/* Hover: fondo rojo + icono blanco */
+.contact-socials a:hover {
+  background: #ff2b2b8d; /* rojo */
+  color: #fff;          /* logo blanco */
+  transform: scale(1.1);
+  box-shadow: 0 0 15px #ff2b2b8d;
+}
+
+/* Fondo animado para el reproductor */
+.radio-player-modern {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Imagen de fondo que se mueve */
+.radio-player-modern .player-glass-modern::before {
+  content: '';
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%;
+  height: 200%;
+  background: url('vegas/overlays/02.png') repeat;
+  background-size: cover;
+  opacity: 0.15; /* sutil */
+  z-index: 0;
+  animation: moverFondo 60s linear infinite;
+}
+
+@keyframes moverFondo {
+  0% { transform: translate(0,0); }
+  50% { transform: translate(-25%, -25%); }
+  100% { transform: translate(0,0); }
+}
+
+/* Mantener todo lo visible por encima del fondo */
+.radio-player-modern .player-glass-modern > * {
+  position: relative;
+  z-index: 1;
+}
+
+.radio-player-modern {
+  position: relative;
+}
+
+.musical-notes-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* para que no interfiera con clicks */
+}

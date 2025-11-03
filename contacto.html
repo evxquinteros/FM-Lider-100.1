@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FM Líder 100.1 — Contacto</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="diseno.css">
+  <link rel="icon" href="IMAGENES/logo.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <div class="header-inner container">
+      <a href="index.html" class="header-brand" aria-label="Inicio">
+        <img src="IMAGENES/logo.png" alt="FM Líder 100.1">
+      </a>
+      <nav aria-label="Navegación principal">
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="programacion.html">Programación</a></li>
+          <li><a href="noticias.html">Noticias</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    
+  </header>
+
+  <main>
+  <!-- ================== SECCIÓN CONTACTO ================== -->
+<section class="contact-section">
+<h2 class="title-glow">Contacto</h2>
+
+<form action="https://formspree.io/f/mldozaak" method="POST" class="contact-form">
+    <input type="text" name="nombre" placeholder="Tu nombre" required>
+    <input type="email" name="email" placeholder="Tu email" required>
+    <textarea name="mensaje" placeholder="Escribí tu mensaje..." rows="5" required></textarea>
+    <input type="hidden" name="_subject" value="Nuevo mensaje desde la web FM Líder">
+    <button type="submit">Enviar mensaje</button>
+  </form>
+
+ 
+ 
+  <div class="contact-info">
+    <p><strong>Dirección:</strong> Saavedra 499, Carmen de Areco, Buenos Aires</p>
+    <p><strong>Teléfono:</strong> <a href="tel:+5402273440000">(+54) 2325 45-8040</a></p>
+    <p><strong>Mail:</strong> <a href="mailto:contacto@fmlider.com">jq_producciones@yahoo.com.ar</a></p>
+  <div class="container">
+       <div class="contact-socials">
+      <a href="https://www.facebook.com/fmlider" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="https://www.instagram.com/fm_lider100.1" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+    </div>
+    
+      <footer class="site-footer">
+        <p class="small">© 2025 FM Líder 100.1 — Todos los derechos reservados.</p>
+      </footer>
+
+  </div>
+</section>
+
+<!-- Script de envío con ventana flotante -->
+<script>
+const form = document.querySelector(".contact-form");
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const data = new FormData(form);
+  const response = await fetch(form.action, {
+    method: "POST",
+    body: data,
+    headers: { 'Accept': 'application/json' }
+  });
+  if (response.ok) {
+    const popup = document.createElement("div");
+    popup.classList.add("success-popup");
+    popup.innerHTML = "✅ ¡Mensaje enviado correctamente!<br>Gracias por comunicarte con <strong>FM Líder</strong>.";
+    document.body.appendChild(popup);
+    setTimeout(() => popup.remove(), 3500);
+    form.reset();
+  } else {
+    alert("❌ Ocurrió un error al enviar el mensaje. Intentá nuevamente.");
+  }
+});
+</script>
+</body>
+</html>

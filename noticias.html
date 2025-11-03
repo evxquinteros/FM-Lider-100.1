@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FM Líder 100.1 — Noticias</title>
+
+  <!-- Tipografía -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="diseno.css">
+  <link rel="icon" href="IMAGENES/logo.png">
+
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    /* Grid para noticias */
+    #feed {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    #feed .card {
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(8px);
+      border-radius: 8px;
+      padding: 10px;
+      transition: all 0.3s ease;
+    }
+
+    #feed .card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    #feed .card h4 {
+      margin-top: 10px;
+      font-size: 1.1rem;
+    }
+
+    #feed .card p {
+      font-size: 0.9rem;
+      color: #ccc;
+      margin: 5px 0;
+    }
+
+    #feed .card a {
+      color: #ff2b2b8d;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    #feed .card a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="header-inner container">
+      <a href="index.html" class="header-brand" aria-label="Inicio">
+        <img src="IMAGENES/logo.png" alt="FM Líder 100.1">
+      </a>
+      <nav aria-label="Navegación principal">
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="programacion.html">Programación</a></li>
+          <li><a href="noticias.html">Noticias</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section container">
+    <h2 class="title-glow">NOTICIAS</h2>
+      <p class="center text-muted">¡Enterate las últimas novedades musicales!</p>
+
+      <!-- Contenedor de noticias -->
+      <div id="feed"></div>
+    </section>
+
+<div class="contact-socials">
+  <a href="https://www.facebook.com/fmlider" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+  <a href="https://www.instagram.com/fm_lider100.1" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+</div>
+
+      <footer class="site-footer">
+        <p class="small">© 2025 FM Líder 100.1 — Todos los derechos reservados.</p>
+      </footer>
+    </div>
+  </main>
+
+  <script>
+    // Resaltar página activa en menú
+    (function(){
+      const links = document.querySelectorAll('nav a');
+      const path = location.pathname.split('/').pop() || 'index.html';
+      links.forEach(a => { if(a.getAttribute('href') === path) a.classList.add('active'); });
+    })();
+
+    // Noticias con imágenes y enlaces funcionales de ejemplo
+    const noticias = [
+      { 
+        titulo: "SE VENDIÓ EL MANUSCRITO DE \"DON'T LOOK BACK IN ANGER\"", 
+        fecha: "28/10/2025", 
+        img: "IMAGENES/OASIS.png", 
+        link: "https://tn.com.ar/musica/noticias/2025/10/28/se-vendio-el-manuscrito-de-dont-look-back-in-anger-de-oasis-por-miles-de-dolares/"
+      },
+      { 
+        titulo: "COMENZÓ FUTTTURA EN BUENOS AIRES Y SE EXTIENDE LA GIRA", 
+        fecha: "27/10/2025", 
+        img: "IMAGENES/tini_futttura_vivo_wrd_b36e1e3f.jpeg", 
+        link: "https://www.perfil.com/noticias/cultura/tini-stoessel-confirma-nueva-funcion-en-tecnopolis-y-anuncia-expansion-internacional-de-su-tour-futttura-2026.phtml"
+      },
+       { 
+        titulo: "LOLLAPALOOZA 2026: LA GRILLA POR DÍA", 
+        fecha: "15/10/2025", 
+        img: "IMAGENES/LOLLA.png", 
+        link: "https://tn.com.ar/musica/noticias/2025/10/15/lollapalooza-argentina-2026-la-grilla-dia-por-dia-y-dos-sorpresas-de-ultimo-momento/"
+      },
+        { 
+        titulo: "NUEVO DISCO DE TAYLOR SWIFT ROMPE RÉCORDS HISTÓRICOS", 
+        fecha: "14/10/2025", 
+        img: "IMAGENES/TAYLOR.jpeg.webp", 
+        link: "https://www.infobae.com/estados-unidos/2025/10/14/taylor-swift-rompe-record-historico-con-the-life-of-a-showgirl-mas-de-4-millones-vendidos-en-una-semana/"
+      },
+      { 
+        titulo: "SODA STEREO REGRESA CON SHOW ÚNICO", 
+        fecha: "29/09/2025", 
+        img: "IMAGENES/soda_stereo_ecos_wrd_f71e1a26.jpeg", 
+        link: "https://indiehoy.com/recitales/soda-stereo-vuelve-con-un-show-unico-fecha-lugar-y-entradas/"
+      },
+      { 
+        titulo: "FITO PÁEZ BRILLA EN EL TINY DESK", 
+        fecha: "15/09/2025", 
+        img: "IMAGENES/fito_paez_tiny_wrd_b2d6d42e.jpeg", 
+        link: "https://es.rollingstone.com/arg-fito-paez-estreno-su-tiny-desk-una-celebracion-de-la-cancion-popular-con-arreglos-sofisticados-y-proyeccion-global/"
+      },
+  
+    ];
+
+    const feed = document.getElementById('feed');
+
+    noticias.forEach(noticia => {
+      const card = document.createElement('div');
+      card.classList.add('card');
+      card.innerHTML = `
+        <img src="${noticia.img}" alt="${noticia.titulo}">
+        <h4>${noticia.titulo}</h4>
+        <p class="small">${noticia.fecha}</p>
+        <a href="${noticia.link}" target="_blank">Leer más</a>
+      `;
+      feed.appendChild(card);
+    });
+  </script>
+  <style>
+  /* Grid para noticias más grandes */
+  #feed {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    margin-top: 18px;
+  }
+
+  #feed .card {
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(8px);
+    border-radius: 12px;
+    padding: 16px;
+    transition: all 0.3s ease;
+  }
+
+  #feed .card img {
+    width: 100%;
+    height: 220px; /* Imagen más grande */
+    object-fit: cover;
+    border-radius: 12px;
+  }
+
+  #feed .card h4 {
+    margin-top: 12px;
+    font-size: 1.3rem; /* Titular más grande */
+  }
+
+  #feed .card p {
+    font-size: 1rem; /* Fecha más visible */
+    color: #ccc;
+    margin: 8px 0;
+  }
+
+  #feed .card a {
+    color: #ff2b2b8d;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+  }
+
+  #feed .card a:hover {
+    text-decoration: underline;
+  }
+</style>
+</body>
+</html>
