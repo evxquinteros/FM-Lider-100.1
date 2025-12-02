@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-    <link rel="icon" href="IMAGENES/logo.png">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="diseno.css">
+  <link rel="icon" href="Imagenes/logo.png">
 </head>
 
  <body>
@@ -53,13 +53,14 @@
   <header>
     <div class="header-inner container">
       <a href="index.html" class="header-brand" aria-label="Inicio">
-        <img src="IMAGENES/logo.png" alt="FM Líder 100.1">
+        <img src="Imagenes/logo.png" alt="FM Líder 100.1">
       </a>
 
       <nav aria-label="Navegación principal">
         <ul>
           <li><a href="index.html">Inicio</a></li>
           <li><a href="programacion.html">Programación</a></li>
+          <li><a href="auspiciantes.html">Auspiciantes</a></li>
           <li><a href="noticias.html">Noticias</a></li>
           <li><a href="contacto.html">Contacto</a></li>
         </ul>
@@ -348,5 +349,22 @@ function animateNotes() {
 
 animateNotes();
 </script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const items = document.querySelectorAll(".programa");
+
+  const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(entry => {
+          if(entry.isIntersecting){
+              entry.target.classList.add("visible");
+          }
+      });
+  }, { threshold: 0.35 });
+
+  items.forEach(item => observer.observe(item));
+});
+</script>
+
 </body>
 </html>
